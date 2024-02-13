@@ -15,29 +15,25 @@ export class ApiService {
 
   public async getAllPage(page?: number) {
 
-    if(!page){
-      page = 1;
-    }
-
     const response = await firstValueFrom(this.http.get(this.url, {
       params: {
         s: 'movie',
-        page: page!
+        page: page || 1
       }
     }));
 
-    return response as unknown as TitleShow;
+    return response as TitleShow;
   }
 
   public async getMovieByname(name: string){
 
     const response = await firstValueFrom(this.http.get(this.url, {
       params:{
-        s: name 
+        s: name
       }
     }))
 
-    return response as unknown as TitleShow;
+    return response as TitleShow;
   }
 
   public async getMovieByID(id: string){
@@ -45,10 +41,10 @@ export class ApiService {
     const response = await firstValueFrom(this.http.get(this.url, {
       params:{
         i: id,
-        plot: 'fu;;'
+        plot: 'movie'
       }
     }))
 
-    return response as unknown as TitleShow;
+    return response as TitleShow;
   }
 }

@@ -23,14 +23,15 @@ export class MainComponent implements OnInit {
   }
 
   async loadData(){
-    const loadData = await this.ApiService.getAllPage(4);
+    //loadData เวลาเข้าหน้ามา
+    const loadData = await this.ApiService.getAllPage();
 
     this.searchResults = loadData.Search;
     console.log(this.searchResults);
-
   }
 
   async callApi() {
+    //Test
     const titleShowResponse = await this.ApiService.getAllPage();
 
     this.searchResults = titleShowResponse.Search;
@@ -39,9 +40,7 @@ export class MainComponent implements OnInit {
   async CallApiname(name: HTMLInputElement){
     const titleShowByname = await this.ApiService.getMovieByname(name.value);
 
-    this.searchResults = titleShowByname.SearchResulth;
-    console.log(this.searchResults);
-
+    this.searchResults = titleShowByname.Search;
   }
 
   async CallApiID(id: HTMLInputElement) {

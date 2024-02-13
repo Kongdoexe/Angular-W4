@@ -1,16 +1,16 @@
+export interface TitleShow{
+  SearchResulth: any;
+  totalResults: string;
+  Response: string;
+  Search: SearchResult
+}
+
 export interface SearchResult {
   Title: string;
   Year: string;
   imdbID: string;
   Type: string;
   Poster: string;
-}
-
-export interface TitleShow{
-  SearchResulth: any;
-  totalResults: string;
-  Response: string;
-  Search: SearchResult
 }
 
 export interface Title {

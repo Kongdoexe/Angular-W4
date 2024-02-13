@@ -1,0 +1,15 @@
+<button (click)="callApi()">Click test api call</button>
+
+<input type="text" #name>
+<button (click)="CallApiname(name)">คลิกค้นหาจากชื่อ</button>
+
+<input type="text" #id>
+<button (click)="CallApiID(id)">คลิกค้นหาจาก ID</button>
+
+<div *ngIf="titles.length == 0">
+  <div *ngFor="let title of searchResults" >
+    <h5 style="color: white;">{{title.Title}}</h5>
+  </div>
+</div>
+
+<h5 style="color: white;">{{titles.Title}}</h5>

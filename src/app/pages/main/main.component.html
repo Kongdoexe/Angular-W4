@@ -6,10 +6,6 @@
 <input type="text" #id>
 <button (click)="CallApiID(id)">คลิกค้นหาจาก ID</button>
 
-<div *ngIf="titles.length == 0">
-  <div *ngFor="let title of searchResults" >
-    <h5 style="color: white;">{{title.Title}}</h5>
-  </div>
+<div *ngFor="let item Of Search">
+  <img src="{{item.Poster}}" alt="">
 </div>
-
-<h5 style="color: white;">{{titles}}</h5>

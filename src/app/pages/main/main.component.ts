@@ -1,53 +1,55 @@
-import { SearchResult } from './../../model/movie_get_res';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { Title, TitleShow } from '../../model/movie_get_res';
+import { SearchResult, TitleShow } from './../../model/movie_get_res';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss',
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  titles: any = [];
-  searchResults: any = [];
+  titles: TitleShow | undefined;
+  Search: SearchResult[] = [];
 
-  constructor(private ApiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.loadData();
   }
 
-  async loadData(){
-    //loadData เวลาเข้าหน้ามา
-    const loadData = await this.ApiService.getAllPage();
+  async loadData() {
 
-    this.searchResults = loadData.Search;
-    console.log(this.searchResults);
+    this.titles = await this.apiService.getAllPage();
+    this.Search = this.titles.Search;
+    console.log(this.Search);
+
   }
 
   async callApi() {
     //Test
-    const titleShowResponse = await this.ApiService.getAllPage();
-
-    this.searchResults = titleShowResponse.Search;
+    this.titles = await this.apiService.getAllPage();
+    this.Search = this.titles.Search;
+    console.log(this.Search);
+    
   }
 
-  async CallApiname(name: HTMLInputElement){
-    const titleShowByname = await this.ApiService.getMovieByname(name.value);
+  async CallApiname(name: HTMLInputElement) {
 
-    this.searchResults = titleShowByname.Search;
+    this.titles = await this.apiService.getMovieByname(name.value);
+    this.Search = this.titles.Search;
+    console.log(this.Search);
+
   }
 
   async CallApiID(id: HTMLInputElement) {
 
-    const titleShowByid = await this.ApiService.getMovieByID(id.value);
-    console.log(titleShowByid);
+    this.titles = await this.apiService.getMovieByID(id.value);
+    this.Search = this.titles.Search;
+    console.log(this.Search);
 
-    this.titles = titleShowByid;
   }
 }

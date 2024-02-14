@@ -1,8 +1,7 @@
 export interface TitleShow{
-  SearchResulth: any;
   totalResults: string;
   Response: string;
-  Search: SearchResult
+  Search: SearchResult[]
 }
 
 export interface SearchResult {
@@ -11,6 +10,7 @@ export interface SearchResult {
   imdbID: string;
   Type: string;
   Poster: string;
+  [key: string]: any; // Index signature to make SearchResult iterable
 }
 
 export interface Title {

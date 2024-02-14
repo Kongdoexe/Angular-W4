@@ -10,7 +10,6 @@ export interface SearchResult {
   imdbID: string;
   Type: string;
   Poster: string;
-  [key: string]: any; // Index signature to make SearchResult iterable
 }
 
 export interface Title {

@@ -1,11 +1,63 @@
-<button (click)="callApi()">Click test api call</button>
+<div class="container-search">
 
-<input type="text" #name>
-<button (click)="CallApiname(name)">คลิกค้นหาจากชื่อ</button>
+  <div style="display: flex; flex-direction: row; justify-content: space-evenly">
+    <div>
+      <input type="text" #name />
+      <button mat-raised-button color="primary" (click)="CallApiname(name)">ค้นหา (ชื่อ)</button>
+    </div>
 
-<input type="text" #id>
-<button (click)="CallApiID(id)">คลิกค้นหาจาก ID</button>
+    <div>
+      <input type="text" #id />
+      <button mat-raised-button color="primary" (click)="CallApiID(id)">ค้นหา (ID)</button>
 
-<div *ngFor="let item Of Search">
-  <img src="{{item.Poster}}" alt="">
+    </div>
+  </div>
+
+</div>
+
+<div class="container-title">
+  
+  <div *ngIf="titles.length > 1; else title1">
+    <div>
+      <div *ngFor="let item of titles;">
+        <div style="display: flex; width: 100%;margin-top: 20px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background-color: rgb(253, 247, 238);">
+          <img src="{{ item.Poster }}" />
+          <div style="margin-left: 2%; margin-top: 1%; margin-right: 2%;">
+            <h2 style="margin-top: 0.5%;">{{ item.Title }} ({{item.Year}})</h2>
+            <h4>{{ replaceGenre(item) }}</h4>
+            <h5>{{item.Plot}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #title1>
+    <div *ngIf="resultTitle === 0">
+      <div style="display: flex; width: 100%; margin-top: 20px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background-color: rgb(253, 247, 238);">
+        <img src="{{ title?.Poster }}"/>
+        <div style="margin-left: 2%; margin-top: 1%; margin-right: 2%;">
+          <h2 style="margin-top: 0.5%;">{{ title?.Title }} ({{title?.Year}})</h2>
+          <h4>{{replaceGenre(title)}}</h4>
+          <h5>{{ title?.Plot}}</h5>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+
+<div class="container-pages">
+  <div style="display: flex; flex-direction: row; justify-content: center;width: 100%;">
+    <div style="margin-left: -35px;" *ngIf="Startpage > 1">
+      <mat-icon class="mat-18" (click)="prev()">navigate_before</mat-icon>
+    </div>
+    <div *ngFor="let i of getNumbers(0 + Startpage, 9 + Startpage)">
+      <p [style.backgroundColor]="i === page ? '#282828' : ''" style="margin-left: 20px;">{{ i }}</p>
+      <span></span>
+    </div>
+    <div style="margin-left: 20px;" *ngIf="resultTitle > 10 || Startpage - 9 == resultTitle">
+      <mat-icon class="mat-18" (click)="next()">navigate_next</mat-icon>
+    </div>
+  </div>
 </div>

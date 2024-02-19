@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 
 export class Constant {
-  public readonly API_ENDPOINT: string = 'http://www.omdbapi.com/?apikey=766747b8';
+  public readonly API_ENDPOINT: string = 'https://www.omdbapi.com/?apikey=766747b8';
 
 }

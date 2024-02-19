@@ -22,7 +22,7 @@ import { SharedServiceService } from '../../services/shared-service.service';
     MatInputModule,
     MatIconModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -47,7 +47,7 @@ export class HeaderComponent {
     this.sharedData.titles = [];
     sessionStorage.clear();
     this.router.navigate(['']);
-    
+
     if(!this.sharedData.check){
       this.sharedData.Logic();
     }

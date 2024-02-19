@@ -1,0 +1,62 @@
+.container-search {
+  width: 55%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.toolbar{
+  background-color: #282828;
+}
+
+.imdb {
+  color: yellow;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.imdb:hover{
+  text-shadow: 0px 1px 9px rgba(255, 17, 0, 0.63);
+}
+
+.inputname {
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.inputID {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: white;
+  border: none;
+}
+
+.selecttype {
+  text-align: center;
+  margin-top: 2px;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  border-color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.container-search button {
+  margin-left: 20px;
+  width: 120px;
+  height: 25px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

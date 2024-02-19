@@ -1,63 +1,72 @@
-<div class="container-search">
-
-  <div style="display: flex; flex-direction: row; justify-content: space-evenly">
-    <div>
-      <input type="text" #name />
-      <button mat-raised-button color="primary" (click)="CallApiname(name)">ค้นหา (ชื่อ)</button>
-    </div>
-
-    <div>
-      <input type="text" #id />
-      <button mat-raised-button color="primary" (click)="CallApiID(id)">ค้นหา (ID)</button>
-
-    </div>
-  </div>
-
-</div>
-
 <div class="container-title">
-  
-  <div *ngIf="titles.length > 1; else title1">
-    <div>
-      <div *ngFor="let item of titles;">
-        <div style="display: flex; width: 100%;margin-top: 20px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background-color: rgb(253, 247, 238);">
-          <img src="{{ item.Poster }}" />
-          <div style="margin-left: 2%; margin-top: 1%; margin-right: 2%;">
-            <h2 style="margin-top: 0.5%;">{{ item.Title }} ({{item.Year}})</h2>
-            <h4>{{ replaceGenre(item) }}</h4>
-            <h5>{{item.Plot}}</h5>
+
+  <div *ngIf="sharedData.result > 0 ; else result">
+
+    <div class="flexbox">
+      <div *ngFor="let item of sharedData.titles">
+        <div class="item">
+          <div class="content">
+            <div style="display: flex; flex-direction: column">
+              <img [src]="item.Poster" style="cursor: pointer" />
+              <h6>{{ item.Title }}</h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
-  <ng-template #title1>
-    <div *ngIf="resultTitle === 0">
-      <div style="display: flex; width: 100%; margin-top: 20px; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; background-color: rgb(253, 247, 238);">
-        <img src="{{ title?.Poster }}"/>
-        <div style="margin-left: 2%; margin-top: 1%; margin-right: 2%;">
-          <h2 style="margin-top: 0.5%;">{{ title?.Title }} ({{title?.Year}})</h2>
-          <h4>{{replaceGenre(title)}}</h4>
-          <h5>{{ title?.Plot}}</h5>
+  <<ng-template #result>
+
+    <div class="flexbox">
+        <div class="item">
+          <div class="content">
+            <div style="display: flex; flex-direction: column">
+              <img [src]="sharedData.title?.Poster" style="cursor: pointer" />
+              <h6>{{ sharedData.title?.Title }}</h6>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
+
   </ng-template>
 
 </div>
 
 <div class="container-pages">
-  <div style="display: flex; flex-direction: row; justify-content: center;width: 100%;">
-    <div style="margin-left: -35px;" *ngIf="Startpage > 1">
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+    "
+  >
+    <div style="margin-left: -35px" *ngIf="sharedData.Startpage > 1">
       <mat-icon class="mat-18" (click)="prev()">navigate_before</mat-icon>
     </div>
-    <div *ngFor="let i of getNumbers(0 + Startpage, 9 + Startpage)">
-      <p [style.backgroundColor]="i === page ? '#282828' : ''" style="margin-left: 20px;">{{ i }}</p>
+    <div
+      *ngFor="
+        let i of getNumbers(0 + sharedData.Startpage, 9 + sharedData.Startpage)
+      "
+    >
+      <a
+        [style.backgroundColor]="i === sharedData.pages ? '#282828' : ''"
+        style="margin-left: 20px; cursor: pointer"
+        (click)="navigate(i)"
+        >{{ i }}</a
+      >
       <span></span>
     </div>
-    <div style="margin-left: 20px;" *ngIf="resultTitle > 10 || Startpage - 9 == resultTitle">
-      <mat-icon class="mat-18" (click)="next()">navigate_next</mat-icon>
+    <div
+      style="margin-left: 20px"
+      *ngIf="
+        this.sharedData.result > 10 ||
+        sharedData.Startpage == this.sharedData.result - 9
+      "
+    >
+      <mat-icon (click)="next()">navigate_next</mat-icon>
     </div>
   </div>
 </div>

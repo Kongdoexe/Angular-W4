@@ -1,0 +1,22 @@
+<mat-toolbar class="toolbar">
+  <p class="imdb" (click)="CallBackApi()">IMDB</p>
+  <div class="container-search">
+    <div class="flex">
+      <div>
+        <input type="text" #id class="inputID"/>
+        <button (click)="CallAPiID(id)">ค้นหา (ID)</button>
+      </div>
+      <div>
+        <input type="text" [value]="getName()" #name class="inputname" />
+        <button (click)="CallAPiname(name)">ค้นหา (name)</button>
+      </div>
+      <div>
+        <select name="type" id="type" class="selecttype">
+          <ng-container *ngFor="let item of sharedData.type">
+            <option value="{{item}}">{{item}}</option>
+          </ng-container>
+        </select>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

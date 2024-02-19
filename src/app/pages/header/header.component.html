@@ -1,14 +1,16 @@
 <mat-toolbar class="toolbar">
-  <p class="imdb" (click)="CallBackApi()">IMDB</p>
+  <p class="imdb" (click)="CallBackApi()">OMDB</p>
   <div class="container-search">
     <div class="flex">
       <div>
+        <span>ไอดี</span>
         <input type="text" #id class="inputID"/>
-        <button (click)="CallAPiID(id)">ค้นหา (ID)</button>
+        <button mat-raised-button color="primary" (click)="CallAPiID(id)">ค้นหา</button>
       </div>
       <div>
+        <span>ชื่อหนัง</span>
         <input type="text" [value]="getName()" #name class="inputname" />
-        <button (click)="CallAPiname(name)">ค้นหา (name)</button>
+        <button mat-raised-button color="primary" (click)="CallAPiname(name)">ค้นหา</button>
       </div>
       <div>
         <select name="type" id="type" class="selecttype">

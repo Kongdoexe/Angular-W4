@@ -44,7 +44,6 @@ export class ApiService {
           },
         })
       );
-      console.log(response);
 
       return response as TitleShow;
     } else {

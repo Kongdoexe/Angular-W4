@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { SearchResult, TitleShow, Title } from '../model/movie_get_res';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedServiceService {
-  constructor(protected apiService: ApiService) {}
+  constructor(protected apiService: ApiService, private router: Router) {}
 
   public Searchtitles: TitleShow | undefined;
   public getID: any[] = [];
@@ -38,6 +39,43 @@ export class SharedServiceService {
       this.Startpage = Math.max(this.pages - 5, 1);
     } else if (this.pages < 8) {
       this.Startpage = Math.max(this.pages - 5, 1);
+    }
+
+    if(sessionStorage.getItem('nameSearch')){
+      console.log("เข้านะ");
+
+      this.router.navigate([''], {
+        queryParams: {
+          name: sessionStorage.getItem('nameSearch')
+        }
+      })
+    }
+
+    if(this.pages >= 2){
+      if(sessionStorage.getItem('nameSearch')){
+        this.router.navigate([''], {
+          queryParams: {
+            name: sessionStorage.getItem('nameSearch'),
+            page: page,
+          }
+        })
+      } else {
+        this.router.navigate([''], {
+          queryParams: {
+            page: page,
+          }
+        })
+      }
+    } else {
+      if(sessionStorage.getItem('nameSearch')){
+        this.router.navigate([''], {
+          queryParams: {
+            name: sessionStorage.getItem('nameSearch')
+          }
+        })
+      } else {
+        this.router.navigate(['']);
+      }
     }
 
     this.titles = [];

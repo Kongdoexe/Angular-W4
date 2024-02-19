@@ -1,11 +1,18 @@
 .container-search {
   width: 55%;
   padding: 20px;
-  margin: 0 auto;
+  margin: 0 280px;
+}
+
+.container-search span{
+  color: white;
+  font-weight: bold;
 }
 
 .toolbar{
   background-color: #282828;
+  position: sticky;
+  top: 0;
 }
 
 .imdb {
@@ -13,6 +20,7 @@
   font-weight: bold;
   font-size: 30px;
   cursor: pointer;
+  transition: text-shadow 0.5s;
 }
 
 .imdb:hover{
@@ -24,6 +32,7 @@
   height: 30px;
   border-radius: 5px;
   border-color: white;
+  margin-left: 10px;
 }
 
 .inputID {
@@ -32,6 +41,7 @@
   border-radius: 5px;
   border-color: white;
   border: none;
+  margin-left: 10px;
 }
 
 .selecttype {
@@ -47,16 +57,12 @@
 
 .container-search button {
   margin-left: 20px;
-  width: 120px;
-  height: 25px;
   font-size: 16px;
-  border-radius: 15px;
-  border: none;
   cursor: pointer;
 }
 
 .flex {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }

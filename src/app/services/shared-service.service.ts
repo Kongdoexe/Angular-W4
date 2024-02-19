@@ -10,12 +10,10 @@ export class SharedServiceService {
   constructor(protected apiService: ApiService, private router: Router) {}
 
   public Searchtitles: TitleShow | undefined;
-  public getID: any[] = [];
   public Search: SearchResult[] = [];
 
-  public title: Title | undefined;
-  public titles: Title[] = [];
-  public gen: any[] = [];
+  public title: SearchResult | undefined;
+  public titles: SearchResult[] = [];
   public result: any;
 
   public Startpage = 1;
@@ -87,21 +85,12 @@ export class SharedServiceService {
     }
 
     this.titles = [];
-    this.getID = [];
-    this.gen = [];
 
     this.Searchtitles = await this.apiService.getPage(page || 1);
     this.result = this.Searchtitles.totalResults;
     this.result = Math.ceil(this.result / 10);
 
-    this.Searchtitles.Search.forEach((SearchResult) => {
-      this.getID.push(SearchResult.imdbID);
-    });
-
-    this.titles = await this.apiService.getMovieByIds(this.getID);
-    this.titles.forEach((title) => {
-      this.gen.push(title.Genre);
-    });
+    this.titles = this.Searchtitles.Search;
 
     //Z - A
     // this.titles.sort((a , b ) => b.Title.localeCompare(a.Title));
@@ -113,8 +102,6 @@ export class SharedServiceService {
   async LogicID(id: string) {
     this.pages = 1;
     this.titles = [];
-    this.getID = [];
-    this.gen = [];
     this.result = 0;
 
     this.title = await this.apiService.getMovieByID(id);

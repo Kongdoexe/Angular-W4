@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Constant } from './../config/constant';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { SearchResult, TitleShow, Title } from '../model/movie_get_res';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class ApiService {
   public async getMovieByIds(ids: string[], page?: number) {
     const plot = sessionStorage.getItem('type') || 'movie';
     const moviePromises = ids.map(async (id) => {
-      const response = await firstValueFrom(
+      const response = await lastValueFrom(
         this.http.get(this.url, {
           params: {
             i: id,
@@ -39,7 +39,7 @@ export class ApiService {
     const nameSearch = sessionStorage.getItem('nameSearch') || '';
 
     if (!nameSearch) {
-      const response = await firstValueFrom(
+      const response = await lastValueFrom(
         this.http.get(this.url, {
           params: {
             s: plot,
@@ -51,7 +51,7 @@ export class ApiService {
       return response as TitleShow;
     } else {
       if(sessionStorage.getItem('type')){
-        const response = await firstValueFrom(
+        const response = await lastValueFrom(
           this.http.get(this.url, {
             params: {
               s: nameSearch,
@@ -63,7 +63,7 @@ export class ApiService {
 
         return response as TitleShow;
       } else {
-        const response = await firstValueFrom(
+        const response = await lastValueFrom(
           this.http.get(this.url, {
             params: {
               s: nameSearch,
@@ -79,7 +79,7 @@ export class ApiService {
   }
 
   public async getMovieByID(id: string) {
-    const response = await firstValueFrom(
+    const response = await lastValueFrom(
       this.http.get(this.url, {
         params: {
           i: id,

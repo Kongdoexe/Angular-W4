@@ -34,11 +34,6 @@ export class TitleComponent implements OnInit{
       this.Soure.push(rating.Source)
       this.rating.push(rating.Value)
     })
-
-    console.log(this.Soure);
-    console.log(this.rating);
-
-
   }
 
   back(){

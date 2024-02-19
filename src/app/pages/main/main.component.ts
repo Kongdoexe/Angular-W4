@@ -66,4 +66,8 @@ export class MainComponent implements OnInit {
   async navigate(page: any){
     this.sharedData.Logic(page);
   }
+
+  navigateTotitle(id: any){
+    this.router.navigate(['title', id]);
+  }
 }

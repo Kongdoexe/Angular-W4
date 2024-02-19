@@ -1,37 +1,31 @@
 <div class="container-title">
-
-  <div *ngIf="sharedData.result > 0 ; else result">
-
+  <div *ngIf="sharedData.result > 0; else result">
     <div class="flexbox">
       <div *ngFor="let item of sharedData.titles">
         <div class="item">
           <div class="content">
             <div style="display: flex; flex-direction: column">
-              <img [src]="item.Poster" style="cursor: pointer" />
+              <img [src]="item.Poster" (click)="navigateTotitle(item.imdbID)" style="cursor: pointer" />
               <h6>{{ item.Title }}</h6>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
   <<ng-template #result>
-
     <div class="flexbox">
-        <div class="item">
-          <div class="content">
-            <div style="display: flex; flex-direction: column">
-              <img [src]="sharedData.title?.Poster" style="cursor: pointer" />
-              <h6>{{ sharedData.title?.Title }}</h6>
-            </div>
+      <div class="item">
+        <div class="content">
+          <div style="display: flex; flex-direction: column">
+            <img [src]="sharedData.title?.Poster" style="cursor: pointer" />
+            <h6>{{ sharedData.title?.Title }}</h6>
           </div>
         </div>
+      </div>
     </div>
-
   </ng-template>
-
 </div>
 
 <div class="container-pages">
@@ -47,15 +41,11 @@
       <mat-icon class="mat-18" (click)="prev()">navigate_before</mat-icon>
     </div>
     <div
-      *ngFor="
-        let i of getNumbers(0 + sharedData.Startpage, 9 + sharedData.Startpage)
-      "
-    >
+      *ngFor="let i of getNumbers(0 + sharedData.Startpage, 9 + sharedData.Startpage)">
       <a
         [style.backgroundColor]="i === sharedData.pages ? '#282828' : ''"
         style="margin-left: 20px; cursor: pointer"
-        (click)="navigate(i)"
-        >{{ i }}</a
+        (click)="navigate(i)">{{ i }}</a
       >
       <span></span>
     </div>

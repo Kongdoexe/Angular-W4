@@ -21,6 +21,8 @@ export class SharedServiceService {
   public Startpage = 1;
   public pages = 1;
 
+  public check = false;
+
   public type = ['movie', 'series', 'episode'];
 
   async CallApiname(name: string) {
@@ -38,6 +40,7 @@ export class SharedServiceService {
   }
 
   async Logic(page?: number) {
+    this.check = false;
     this.pages = page || 1;
 
     if (this.pages > 8) {

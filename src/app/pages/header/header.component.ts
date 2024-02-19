@@ -28,7 +28,7 @@ import { SharedServiceService } from '../../services/shared-service.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(protected sharedData: SharedServiceService){};
+  constructor(protected sharedData: SharedServiceService, private router: Router){};
 
   CallAPiname(name: HTMLInputElement) {
     this.sharedData.CallApiname(name?.value);
@@ -43,10 +43,15 @@ export class HeaderComponent {
   }
 
   CallBackApi(){
+    this.sharedData.title = undefined
+    this.sharedData.titles = [];
     sessionStorage.clear();
-    this.sharedData.Logic();
+    this.router.navigate(['']);
+    
+    if(!this.sharedData.check){
+      this.sharedData.Logic();
+    }
   }
-
 
   getName() {
     return sessionStorage.getItem('nameSearch');

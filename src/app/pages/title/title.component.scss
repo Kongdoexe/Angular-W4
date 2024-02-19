@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+  margin-top: 2%;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+
+  p {
+    color: rgb(98, 98, 98);
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  p:hover{
+    color: white;
+  }
+}
+
+p {
+  margin-left: 1%;
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+}
+
+.button:hover{
+  background-color: rgb(56, 56, 56);
+}

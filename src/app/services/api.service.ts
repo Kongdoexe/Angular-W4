@@ -21,7 +21,7 @@ export class ApiService {
         this.http.get(this.url, {
           params: {
             i: id,
-            plot: plot,
+            type: plot,
             page: page || 1,
           },
         })
@@ -50,17 +50,30 @@ export class ApiService {
 
       return response as TitleShow;
     } else {
-      const response = await firstValueFrom(
-        this.http.get(this.url, {
-          params: {
-            s: nameSearch,
-            type: plot,
-            page: page || 1,
-          },
-        })
-      );
+      if(sessionStorage.getItem('type')){
+        const response = await firstValueFrom(
+          this.http.get(this.url, {
+            params: {
+              s: nameSearch,
+              type: plot,
+              page: page || 1,
+            },
+          })
+        );
 
-      return response as TitleShow;
+        return response as TitleShow;
+      } else {
+        const response = await firstValueFrom(
+          this.http.get(this.url, {
+            params: {
+              s: nameSearch,
+              page: page || 1,
+            },
+          })
+        );
+
+        return response as TitleShow;
+      }
     }
 
   }

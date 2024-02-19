@@ -1,0 +1,35 @@
+<div class="container">
+
+<span (click)="back()" style="color: yellow; font-size: 30px; cursor: pointer; font-weight: bold;">BACK</span>
+
+<div>
+  <div style="background-color: #282828;">
+    <div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="flex-container">
+  <div>
+    <img src="{{title?.Poster}}" alt="">
+  </div>
+  <div style="color: white; margin-left: 2%;">
+    <h1>{{title?.Title}}</h1>
+    <div class="flex">
+      <p>{{title?.Runtime}}</p>
+      <p>{{title?.Year}}</p>
+      <p>{{title?.Rated}}</p>
+    </div>
+    <p style="text-indent: 40px;">{{title?.Plot}}</p>
+    <div class="flex">
+      <div *ngFor="let gen of title?.Genre?.split(',')" style="margin-left: 1%;">
+        <button mat-raised-button color="white" class="button">{{gen}}</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+</div>

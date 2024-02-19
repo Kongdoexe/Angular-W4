@@ -38,10 +38,15 @@ export class HeaderComponent {
     this.sharedData.CallApiID(id.value);
   }
 
+  CallApiType(type: HTMLSelectElement){
+    this.sharedData.CallApiType(type.value);
+  }
+
   CallBackApi(){
     sessionStorage.clear();
     this.sharedData.Logic();
   }
+
 
   getName() {
     return sessionStorage.getItem('nameSearch');

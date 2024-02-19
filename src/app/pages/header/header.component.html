@@ -13,10 +13,8 @@
         <button mat-raised-button color="primary" (click)="CallAPiname(name)">ค้นหา</button>
       </div>
       <div>
-        <select name="type" id="type" class="selecttype">
-          <ng-container *ngFor="let item of sharedData.type">
-            <option value="{{item}}">{{item}}</option>
-          </ng-container>
+        <select name="type" id="type" class="selecttype" #select (change)="CallApiType(select)">
+          <option *ngFor="let item of sharedData.type" value="{{item}}">{{item}}</option>
         </select>
       </div>
     </div>

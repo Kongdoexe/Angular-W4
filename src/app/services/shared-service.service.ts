@@ -32,6 +32,11 @@ export class SharedServiceService {
     this.LogicID(id);
   }
 
+  async CallApiType(type: string){
+    sessionStorage.setItem('type', type);
+    this.Logic();
+  }
+
   async Logic(page?: number) {
     this.pages = page || 1;
 
@@ -110,5 +115,9 @@ export class SharedServiceService {
     this.result = 0;
 
     this.title = await this.apiService.getMovieByID(id);
+  }
+
+  async LogicType(){
+
   }
 }

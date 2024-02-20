@@ -20,7 +20,7 @@
       <div class="item">
         <div class="content">
           <div style="display: flex; flex-direction: column">
-            <img [src]="sharedData.title?.Poster" style="cursor: pointer" />
+            <img [src]="sharedData.title?.Poster" (click)="navigateTotitle(sharedData.title?.imdbID)" style="cursor: pointer" />
             <h6>{{ sharedData.title?.Title }}</h6>
           </div>
         </div>

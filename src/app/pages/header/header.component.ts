@@ -46,7 +46,7 @@ export class HeaderComponent {
     if (id && id.value) {
       this.sharedData.CallApiID(id.value);
     } else {
-      console.error("ID is undefined or empty. Unable to call API.");
+      console.error("ID is undefined or empty.");
     }
   }
 
@@ -65,6 +65,8 @@ export class HeaderComponent {
   }
 
   async updateRealTimeData(name: any) {
+    console.log(name.value);
+
     this.searchResults = await this.api.getMovieSearch(name.value);
     this.isSearchResultsVisible = true;
     if(this.searchResults.Response){

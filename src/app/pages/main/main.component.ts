@@ -37,10 +37,6 @@ export class MainComponent implements OnInit {
     this.sharedData.Logic();
   }
 
-  replaceGenre(item: any): string {
-    return item && item.Genre ? item.Genre.replace(/,/g, ' • ') : '';
-  }
-
   getNumbers(start: number, end: number): number[] {
     const numbers = [];
     if (end >= this.sharedData.result) {

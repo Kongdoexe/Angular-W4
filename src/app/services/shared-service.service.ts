@@ -20,7 +20,6 @@ export class SharedServiceService {
   public pages = 1;
 
   public check = false;
-
   public type = ['movie', 'series', 'episode'];
 
   async CallApiname(name: string) {
@@ -90,7 +89,6 @@ export class SharedServiceService {
     this.result = Math.ceil(this.result / 10);
 
     this.titles = this.Searchtitles.Search;
-
     //Z - A
     // this.titles.sort((a , b ) => b.Title.localeCompare(a.Title));
 
@@ -104,9 +102,5 @@ export class SharedServiceService {
     this.result = 0;
 
     this.title = await this.apiService.getMovieByID(id);
-  }
-
-  async LogicType(){
-
   }
 }

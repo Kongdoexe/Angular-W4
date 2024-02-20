@@ -96,6 +96,17 @@ h6 {
   color: #4d4d4d;
 }
 
-.container-pages div mat-icon:hover{
+.container-pages div mat-icon:hover {
   color: #282828;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container-pages {
+    width: 70%;
+  }
+
+  .container-pages div mat-icon {
+    font-size: 20px; /* Decrease font size for smaller screens */
+  }
 }

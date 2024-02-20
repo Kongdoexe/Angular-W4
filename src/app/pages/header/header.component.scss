@@ -75,8 +75,8 @@
   position: absolute;
   top: 100%; /* Position below the input field */
   left: 3.3vw;
-  z-index: 1000; /* Ensure it appears above other elements */
-  width: 200px;
+  z-index: 0;
+  width: 20vw;
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

@@ -73,7 +73,9 @@ export class HeaderComponent {
   }
 
   onInputFieldClick() {
-    this.isSearchResultsVisible = true;
+    if(this.searchResults){
+      this.isSearchResultsVisible = true;
+    }
   }
 
   onInputFieldBlur() {
@@ -88,10 +90,9 @@ export class HeaderComponent {
 
   onSearchResultClick(result: any) {
 
-    this.router.navigate(['title', result.imdbID])
+    sessionStorage.setItem('nameSearch', result.Title)
     this.isSearchResultsVisible = false;
-    console.log(result);
-
+    this.sharedData.Logic();
   }
 
   getName() {

@@ -2,20 +2,20 @@
 
 <span (click)="back()" style="color: yellow; font-size: 30px; cursor: pointer; font-weight: bold;">BACK</span>
 
-<div>
-  <div style="background-color: #282828;">
-    <div>
-      
-    </div>
-  </div>
-</div>
-
 <div class="flex-container">
   <div>
     <img src="{{title?.Poster}}" alt="">
   </div>
   <div style="color: white; margin-left: 2%;">
-    <h1>{{title?.Title}}</h1>
+    <div style="display: flex;flex-direction: row; justify-content: space-between;">
+      <div>
+        <h1>{{title?.Title}}</h1>
+      </div>
+      <div style="display: flex;">
+        <mat-icon style="margin-top: 1vw; margin-right: 0.4vw; color: yellow;">star</mat-icon>
+        <h2>{{rating}}</h2>
+      </div>
+    </div>
     <div class="flex">
       <p>{{title?.Runtime}}</p>
       <p>{{title?.Year}}</p>

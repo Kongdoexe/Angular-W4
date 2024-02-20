@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SharedServiceService } from '../../services/shared-service.service';
 import { ApiService } from '../../services/api.service';
-import { Title } from '../../model/movie_get_res';
+import { SearchResult, Title } from '../../model/movie_get_res';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({

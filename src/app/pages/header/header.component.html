@@ -4,13 +4,20 @@
     <div class="flex">
       <div>
         <span>ไอดี</span>
-        <input type="text" #id class="inputID"/>
-        <button mat-raised-button color="primary" (click)="CallAPiID(id)">ค้นหา</button>
+        <input type="text" #id class="inputID" (keyup.enter)="CallApiID(id)" />
+        <button mat-raised-button color="primary" (click)="CallApiID(id)">ค้นหา</button>
       </div>
-      <div>
+      <div class="position-relative" (click)="onInputFieldClick()">
         <span>ชื่อหนัง</span>
-        <input type="text" [value]="getName()" #name class="inputname" />
+        <input type="text" [(ngModel)]="movieName" class="inputname" #name (input)="updateRealTimeData(name)" (blur)="onInputFieldBlur()" />
         <button mat-raised-button color="primary" (click)="CallAPiname(name)">ค้นหา</button>
+
+        <!-- Display real-time search results here -->
+        <div class="search-results" *ngIf="isSearchResultsVisible">
+          <ul>
+            <li *ngFor="let result of Results" (click)="onSearchResultClick(result)">{{ result.Title }}</li>
+          </ul>
+        </div>
       </div>
       <div>
         <select name="type" id="type" class="selecttype" #select (change)="CallApiType(select)">

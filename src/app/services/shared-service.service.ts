@@ -48,7 +48,6 @@ export class SharedServiceService {
     }
 
     if(sessionStorage.getItem('nameSearch')){
-      console.log("เข้านะ");
 
       this.router.navigate([''], {
         queryParams: {

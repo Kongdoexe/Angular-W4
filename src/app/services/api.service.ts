@@ -9,30 +9,11 @@ import { SearchResult, TitleShow, Title } from '../model/movie_get_res';
 })
 export class ApiService {
   pages: any;
+  checkInput = false
   // plot: any;
   constructor(private constant: Constant, private http: HttpClient) {}
 
   url = this.constant.API_ENDPOINT;
-
-  public async getMovieByIds(ids: string[], page?: number) {
-    const plot = sessionStorage.getItem('type') || 'movie';
-    const moviePromises = ids.map(async (id) => {
-      const response = await lastValueFrom(
-        this.http.get(this.url, {
-          params: {
-            i: id,
-            type: plot,
-            page: page || 1,
-          },
-        })
-      );
-
-      return response as Title;
-    });
-
-    const movies = await Promise.all(moviePromises);
-    return movies;
-  }
 
   public async getPage(page?: number) {
     const plot = sessionStorage.getItem('type') || 'movie';
@@ -89,5 +70,18 @@ export class ApiService {
     );
 
     return response as Title;
+  }
+
+  public async getMovieSearch(name: string){
+
+    const reponse = await lastValueFrom(
+      this.http.get(this.url, {
+        params: {
+          s: name
+        }
+      })
+    )
+
+    return reponse as TitleShow;
   }
 }
